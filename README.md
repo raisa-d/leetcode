@@ -1,2 +1,2 @@
 # leetcode
-Leetcode challenges
+This repository contains my solutions to leetcode challenges.
