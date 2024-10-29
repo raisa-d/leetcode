@@ -40,3 +40,25 @@ const maxTimes = str => {
   
   console.log(maxTimes('Hello world')) // 'l'
   console.log(maxTimes('Hey there delilah')) // 'e'
+
+// SOLUTION 2: same as 1 but instead of conditional do charMap[char] = charMap[char] + 1 || 1, declare all variables at the top
+const maxTimes = str => {
+  // declare map, maxCount, maxChar
+  let charMap = {}, maxCount = 0, maxChar = null;
+  // map for chars in string and freuency
+  for(const char of str) {
+    charMap[char] = charMap[char] + 1 || 1
+  }
+  
+  for(const char in charMap) {
+    if(charMap[char] > maxCount) {
+      maxCount = charMap[char];
+      maxChar = char;
+    }
+  }
+  // loop and find most frequent char
+  return maxChar
+}
+  
+  console.log(maxTimes('Hello world')) // 'l'
+  console.log(maxTimes('Hey there delilah')) // 'e'
