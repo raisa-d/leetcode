@@ -8,6 +8,7 @@ describe("Two Sum", () => {
 });
 */
 
+// SOLUTION 1
 // arr & sum -> arr of pairs that add up to sum
 function twoSum(arr, sum) {
     // arr for pairs, arr for used numbers
@@ -21,6 +22,24 @@ function twoSum(arr, sum) {
         }
         // add current num to usedNums
         usedNums.push(num)
+    }
+    return pairs
+}
+
+// SOLUTION 2: use hashmap
+function twoSum2(arr, sum) {
+    // pairs arr
+    const pairs = [];
+    // hashmap obj
+    const usedNums = {};
+    // loop
+    for(const currentNum of arr) {
+        const difference = sum - currentNum
+        // if the difference exists in object, we have a pair
+        if(usedNums[difference]) {
+            pairs.push([currentNum, difference])
+        } 
+        usedNums[currentNum] = true;
     }
     return pairs
 }
