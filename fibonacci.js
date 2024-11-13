@@ -1,5 +1,7 @@
 /*
-https://leetcode.com/problems/fib-number/
+https://leetcode.com/problems/fibonacci-number/description/
+https://www.youtube.com/watch?v=zg-ddPbzcKM 
+https://www.youtube.com/watch?v=hISXxjX6Ino
 The fib numbers, commonly denoted F(n) form a sequence, called the fib sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
 
 F(0) = 0, F(1) = 1
@@ -46,7 +48,7 @@ console.log(fib(4)) // 3
 console.log(fib(5)) // 5
 console.log(fib(8))// 21
 
-// SOLUTION 2: use recursion
+// SOLUTION 2: use recursion. exponential time complextiy O(2^n)
 // F(n) = F(n - 1) + F(n - 2), for n > 1.
 function fib2(n) {
     // base case (less than 2)
@@ -57,3 +59,20 @@ function fib2(n) {
 }
 
 fib2(5) // 5 bc 0, 1, 1, 2, 3, 5
+
+// SOLUTION 3: memoization - remembering what you solved earlier to use later so you dont have to redo the same operations to figre out the same thing. makes recursion more DRY
+const memo = {}; // object to store what we've learned
+function fib3(n) {
+    if(n < 2) {
+        return n;
+    } else if (memo[n]) {
+        return memo[n];
+    } else {
+        let result = fib(n - 1) + fib(n - 2);
+        memo[n] = result;
+        return result;
+    }
+};
+
+// recursion = solving problem by a function calling itself 
+// memoization = storing and checking completed values in your object 
